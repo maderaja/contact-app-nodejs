@@ -1,0 +1,12 @@
+<h1>Web Server NodeJs + MYSQL + PM2</h1>
+<h2>Hallo, <%= nama %></h2>
+
+<h4 style="margin-top: 40px">Daftar Mahasiswa</h4>
+<% if (mahasiswa.length < 1 ) { %>
+<h4>Mahasiswa Kosong</h4>
+<% } else{ %> <% mahasiswa.forEach(mhs => { %>
+<ul>
+  <li>Nama : <%= mhs.nama %></li>
+  <li>Email : <%= mhs.email %></li>
+</ul>
+<% }) %> <% } %>

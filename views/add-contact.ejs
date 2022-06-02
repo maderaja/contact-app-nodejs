@@ -1,0 +1,51 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Form Tambah Data Contact</h2>
+
+      <% if (typeof errors != 'undefined') { %>
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <% errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% } %>
+
+      <form method="post" action="/contact" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama : </label>
+          <input type="text" class="form-control" name="nama" id="nama" required />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email : </label>
+          <input type="email" class="form-control" name="email" id="email" required />
+        </div>
+        <div class="mb-3">
+          <label for="nohp" class="form-label">Nomor HP : </label>
+          <input type="text" class="form-control" name="nohp" id="nohp" required />
+        </div>
+        <div class="mb-3">
+          <label for="foto" class="form-label">Foto : </label>
+          <img id="foto" title="please select an image" src="http://localhost:3000/img/image.png" alt="foto" class="d-block mb-1" width="100px" />
+          <input class="form-control" type="file" name="foto" onchange="readURL(this);" />
+        </div>
+        <button type="submit" class="btn btn-primary">Tambah Data!</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#foto').attr('src', e.target.result).width(150).height(150);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>

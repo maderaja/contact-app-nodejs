@@ -1,0 +1,39 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Form Edit Data Contact</h2>
+
+      <% if (typeof errors != 'undefined') { %>
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <% errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% } %>
+
+      <form method="post" action="/contact?_method=PUT">
+        <input type="hidden" name="id" value="<%= contact.id  %>" />
+        <input type="hidden" name="oldNama" value="<%= (contact.oldNama) ? contact.oldNama : contact.nama  %>" />
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama : </label>
+          <input type="text" class="form-control" name="nama" value="<%= contact.nama  %>" id="nama" required />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email : </label>
+          <input type="email" class="form-control" name="email" value="<%= contact.email  %>" id="email" required />
+        </div>
+        <div class="mb-3">
+          <label for="nohp" class="form-label">Nomor HP : </label>
+          <input type="text" class="form-control" name="nohp" value="<%= contact.nohp  %>" id="nohp" required />
+        </div>
+        <div class="mb-3">
+          <label for="foto" class="form-label">Foto : </label>
+          <img id="foto" src="http://localhost:3000/foto/<%= contact.foto %>" alt="select your image" width="150px" class="d-block mb-1" />
+        </div>
+        <button type="submit" class="btn btn-warning text-dark">Ubah Data!</button>
+      </form>
+    </div>
+  </div>
+</div>

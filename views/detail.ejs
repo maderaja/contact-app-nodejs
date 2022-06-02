@@ -1,0 +1,33 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Detail Contact</h2>
+      <% if (!contact) { %>
+      <div class="alert alert-danger fw-bold" role="alert">
+        ❗❗🚨Data contact tidak ditemukan 🚨❗❗<br />
+        <a href="/contact" class="alert-link fw-normal">&laquo; kembali ke daftar contact</a>.
+      </div>
+      <% } else {%>
+
+      <div class="card mb-5" style="width: 18rem">
+        <img src="http://localhost:3000/foto/<%= contact.foto %>" width="200" class="mx-auto mt-2" alt="foto" />
+        <hr />
+        <div class="card-body">
+          <h5 class="card-title"><%= contact.nama %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= contact.nohp %></h6>
+          <p class="card-text"><%= contact.email %></p>
+          <p class="card-text text-muted"><%= waktu %></p>
+          <a href="/contact/edit/<%= contact.id %>" class="mt-1 btn btn-warning badge text-dark">ubah</a>
+
+          <form action="/contact?_method=DELETE" method="post" class="d-inline">
+            <input type="hidden" name="id" value="<%= contact.id %>" />
+            <button type="submit" class="mt-1 btn btn-danger badge" onclick="return confirm('Anda Yakin?')">hapus</button>
+          </form>
+
+          <a href="/contact" class="card-link d-block mt-3">&laquo; Kembali</a>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
